@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI 計算器</title>
+    <style>
+      @media (max-width: 600px) {
+        body {
+          margin: 20px;
+        }
+        input {
+          width: 80%;
+        }
+        button {
+          width: 100%;
+        }
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+        animation: gradientAnimation 5s infinite alternate;
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background: linear-gradient(to right, #74ebd5, #acb6e5);
+        }
+        50% {
+          background: linear-gradient(to right, #ff9a9e, #fad0c4);
+        }
+        100% {
+          background: linear-gradient(to right, #74ebd5, #acb6e5);
+        }
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 400px;
+        margin: auto;
+      }
+      input,
+      button {
+        width: 80%;
+        max-width: 300px;
+      }
+
+      input {
+        padding: 5px;
+        margin: 5px;
+      }
+      button {
+        background-color: blue;
+        color: white;
+        padding: 8px;
+        margin-top: 35px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>BMI 計算器</h1>
+      <label for="weight">體重（公斤）:</label>
+      <input type="number" id="weight" placeholder="輸入體重" />
+
+      <label for="height">身高（公尺）:</label>
+      <input type="number" id="height" placeholder="輸入身高" />
+      <br />
+      <button id="calculateBtn">計算 BMI</button>
+
+      <p>你的 BMI 值為: <span id="result">--</span></p>
+    </div>
+    <script>
+      document
+        .getElementById("calculateBtn")
+        .addEventListener("click", function () {
+          const weight = parseFloat(document.getElementById("weight").value);
+          const height = parseFloat(document.getElementById("height").value);
+
+          if (!weight || !height) {
+            alert("請輸入正確的體重和身高！");
+            return;
+          }
+
+          const bmi = weight / (height * height);
+          document.getElementById("result").textContent = bmi.toFixed(2);
+        });
+    </script>
+  </body>
+</html>
